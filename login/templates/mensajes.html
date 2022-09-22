@@ -1,0 +1,34 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="fw-bolder">BIENVENIDO A LOS MENSAJES</h1>
+<br>
+<a class="btn btn-primary" href="{% url 'mensaje_creacion' %}">¡Manda tu mensaje!</a>
+
+
+{% endblock %}
+
+{% block contenido_que_cambia %}
+        <div class="container">
+        {% for mensaje in mensajes %}
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="small text-muted">Mensaje de: {{ mensaje.emisor }}</div>
+                            <h4 class="card-title"> Para: {{ mensaje.receptor }}</h4>
+                            <p  style="font-size: large; color:coral " class="card-text">Contenido: {{ mensaje.contenido | safe }}</p>
+                            <a class="btn btn-primary" href="{% url 'mensaje_creacion' %}">¡Responder!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+
+{% endblock %}
+

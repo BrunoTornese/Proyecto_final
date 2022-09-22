@@ -1,0 +1,44 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="fw-bolder">BIENVENIDO A LOS AUTOS ELECTRICOS</h1>
+
+<a class="btn btn-primary" href="{% url 'electrico_creacion' %}">¡Crea Tu Post!</a>
+
+{% endblock %}
+
+{% block contenido_que_cambia %}
+        <div class="container">
+        {% if posts %}
+        {% for post in posts %}
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        {% if post.imagen %}
+                            <img src="{{ post.imagen.url }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <div class="small text-muted">Creado el {{ post.fecha_creacion }}</div>
+                            <h2 class="card-title">{{ post.titulo }}</h2>
+                            <p class="card-text">{{post.texto | safe }}</p>
+                            <p class="card-text"><strong>Creado por: {{post.autor}}</strong></p>
+                            <a class="btn btn-primary" href="{% url 'electrico_detalle' post.pk %}">Leer Mas →</a>
+                            <a class="btn btn-primary" href="{% url 'eliminar_electrico' post.titulo %}">Eliminar Post ✗</a>
+                            <a class="btn btn-primary" href="{% url 'electrico_editar' post.pk %}">Editar Post</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <h1>No hay posts crea uno!</h1>
+        {% endif %}
+        </div>
+
+
+{% endblock %}
+

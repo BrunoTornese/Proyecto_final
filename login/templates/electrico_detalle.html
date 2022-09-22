@@ -1,0 +1,22 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="fw-bolder">{{ post.titulo }}</h1>
+
+{% endblock %}
+
+{% block contenido_que_cambia %}
+    <h1> {{ post.titulo }} </h1>
+    {% if post.imagen %}
+        <img style="width: 450px;" src="{{ post.imagen.url }}" >
+    {% endif %}
+    <p style="font-size:x-large"> {{ post.texto | safe }} </p>
+    <h3> Autor: {{ post.autor }} </h3>
+    <br>
+    <br>
+    <button><a class="btn btn-primary" href="{% url 'electricos'  %}">Volver ← </a></button> 
+
+{% endblock %}

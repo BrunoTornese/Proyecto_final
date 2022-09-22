@@ -1,0 +1,20 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block contenido_que_cambia %}
+
+<h1> Agregando avatar a: {{ usuario }}</h1>
+
+
+<form action= "{% url 'nuevo_avatar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+
+    <table>
+        {{ formulario.as_table }}
+    </table>
+
+    <input type="submit" value="Agregar">
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="fw-bolder">USUARIO: {{ user.username }}</h1>
+
+{% endblock %}
+
+{% block contenido_que_cambia %}
+    <div style="margin-left: 850px;">
+        <li>Nombre: {{ user.first_name }}</li>
+        <li>Apellido: {{ user.last_name }}
+        <li>Email: {{ user.email }}</li>
+        <br>
+        <br>
+        <a class="btn btn-primary" href="{% url 'editar_perfil' %}">Editar Perfil</a>
+        <a class="btn btn-primary" href="{% url 'inicio' %}">Volver ← </a>
+    </div>
+
+
+{% endblock %}

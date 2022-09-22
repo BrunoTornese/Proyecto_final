@@ -1,0 +1,21 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+<h1 class="fw-bolder">BIENVENIDO A EL LOGIN</h1>
+
+{% endblock %}
+
+{% block contenido_que_cambia %}
+    <h1>{{ mensaje }}</h1>
+    <form action="{% url 'login' %}" method="POST"> {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Iniciar Sesion</button>
+
+    </form>
+{% endblock %}
+       
